@@ -1,0 +1,4 @@
+// Not gamY specific
+[
+	{ "keys": ["alt+b"], "command": "build_selected"},
+]

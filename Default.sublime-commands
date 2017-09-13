@@ -1,0 +1,6 @@
+[
+    {
+        "caption": "Build selected text",
+        "command": "build_selected"
+    }
+]

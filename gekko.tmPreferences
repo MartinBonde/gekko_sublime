@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>name</key>
+    <string>Comments</string>
+
+    <key>scope</key>
+    <string>source.gekko</string>
+
+    <key>settings</key>
+    <dict>
+        <key>shellVariables</key>
+        <array>
+            <dict>
+                <key>name</key>
+                <string>TM_COMMENT_START</string>
+                <key>value</key>
+                <string>// </string>
+            </dict>
+        </array>
+
+        <key>cancelCompletion</key>
+        <string>\b(?i)ACCEPT|ANALYZE|CHECKOFF|CLEAR|CLIP|CLONE|CLOSE|CLS|COLLAPSE|COMPARE|COPY|COUNT|CREATE|DATE|DECOMP|DELETE|DISP|DOC|DOWNLOAD|EDIT|END|ENDO|EXIT|EXO|EXPORT|FINDMISSINGDATA|FOR|FUNCTION|GOTO|HDG|HELP|IF|IMPORT|INDEX|INI|INTERPOLATE|ITERSHOW|LIBRARY|LIST|LOCK|MATRIX|MEM|MENU|MODE|MODEL|MULPRT|NAME|OLS|OPEN|OPTION|PAUSE|PIPE|PLOT|PRT|R_EXPORT|R_FILE|R_RUN|REBASE|READ|RENAME|RESET|RESTART|RETURN|RUN|SERIES|SHEET|SHOW|SIGN|SIM|SMOOTH|SPLICE|STOP|STRING|SYS|TABLE|TARGET|TELL|TIME|TIMEFILTER|TRANSLATE|TRUNCATE|UNFIX|UNLOCK|UNSWAP|VAL|WRITE|X12A|XEDIT)\b</string>
+        <!-- <string>^(.*\b(and|or)$)|(\s*(pass|return|and|or|(class|def)\s*[a-zA-Z_0-9]+)$)</string> -->
+    </dict>
+
+    <key>uuid</key>
+    <string>3c827df3-2775-4326-b1ff-206ff30d4fe7</string>
+</dict>
+</plist>

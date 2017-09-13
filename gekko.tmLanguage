@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>gcm</string>
+	</array>
+	<key>name</key>
+	<string>Gekko</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>include</key>
+			<string>#commands</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#linecomment</string>
+		</dict>
+	</array>
+	<key>repository</key>
+	<dict>
+		<key>commands</key>
+		<dict>
+			<key>match</key>
+			<string>(?&lt;!\.)\b((?i)ACCEPT|ANALYZE|CHECKOFF|CLEAR|CLIP|CLONE|CLOSE|CLS|COLLAPSE|COMPARE|COPY|COUNT|CREATE|DATE|DECOMP|DELETE|DISP|DOC|DOWNLOAD|EDIT|END|ENDO|EXIT|EXO|EXPORT|FINDMISSINGDATA|FOR|FUNCTION|GOTO|HDG|HELP|IF|ELSE|IMPORT|INDEX|INI|INTERPOLATE|ITERSHOW|LIBRARY|LIST|LOCK|MATRIX|MEM|MENU|MODE|MODEL|MULPRT|NAME|OLS|OPEN|OPTION|PAUSE|PIPE|PLOT|PRT|R_EXPORT|R_FILE|R_RUN|REBASE|READ|RENAME|RESET|RESTART|RETURN|RUN|SERIES|SHEET|SHOW|SIGN|SIM|SMOOTH|SPLICE|STOP|STRING|SYS|TABLE|TARGET|TELL|TIME|TIMEFILTER|TRANSLATE|TRUNCATE|UNFIX|UNLOCK|UNSWAP|VAL|WRITE|X12A|XEDIT)\b</string>
+			<key>name</key>
+			<string>keyword.commands.gekko</string>
+		</dict>
+		<key>linecomment</key>
+		<dict>
+			<key>match</key>
+			<string>(//).*\n?</string>
+			<key>name</key>
+			<string>comment.line.gekko</string>
+		</dict>
+	</dict>
+	<key>scopeName</key>
+	<string>source.gekko</string>
+	<key>uuid</key>
+	<string>3c827df3-2775-4326-b1ff-206ff30d4fe7</string>
+</dict>
+</plist>
