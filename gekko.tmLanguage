@@ -18,6 +18,22 @@
 			<key>include</key>
 			<string>#linecomment</string>
 		</dict>
+		<dict>
+			<key>include</key>
+			<string>#singlequotestring</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#number</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#math</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#operator</string>
+		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
@@ -34,6 +50,61 @@
 			<string>(//).*\n?</string>
 			<key>name</key>
 			<string>comment.line.gekko</string>
+		</dict>
+		<key>math</key>
+		<dict>
+			<key>match</key>
+			<string>(?i)\b(ABS|ARCCOS|ARCSIN|ARCTAN|ARCTAN2|BETA|BETAREG|BINOMIAL|BOOL_(AND|EQV|IMP|NOT|OR|XOR)|CEIL|CENTROPY|COS|COSH|CVPOWER|DIV|DIV0|EDIST|ENTROPY|ERRORF|EXECSEED|EXP|FACT|FLOOR|FRAC|GAMMA|GAMMAREG|IFTHEN|LOG|LOG2|LOG10|LOGBETA|LOGGAMMA|MAPVAL|MAX|MIN|MOD|NCP(CM|F|VUPOW|VUSIN)|NORMAL|PI|POLY|POWER|RANDBINOMIAL|RANDLINEAR|RANDTRIANGLE|ROUND|RPOWER|SIGMOID|SIGN|SIGNPOWER|SIN|SINH|SL(EXP|LOG10|REC)|SQ(EXP|LOG10|R|REC|RT)|TANH?|TRUNC|UNIFORM|UNIFORMINT|VCPOWER)\b</string>
+			<key>name</key>
+			<string>keyword.operator.gms</string>
+		</dict>
+		<key>number</key>
+		<dict>
+			<key>match</key>
+			<string>(?&lt;![\d.])\b\d+(\.\d+)?([eE]-?\d+)?|\.\d+([eE]-?\d+)?</string>
+			<key>name</key>
+			<string>constant.numeric.gms</string>
+		</dict>
+		<key>operator</key>
+		<dict>
+			<key>match</key>
+			<string>(\b(and|or|not)\b)|(\+|-|%|#|\*|\/|\*\*|=|&lt;=?|&gt;=?)</string>
+			<key>name</key>
+			<string>keyword.operator.gams</string>
+		</dict>
+		<key>singlequotestring</key>
+		<dict>
+			<key>begin</key>
+			<string>'</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.gms</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>'</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.gms</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>string.quoted.single.gms</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>%(\w+%|\d+)</string>
+					<key>name</key>
+					<string>entity.name.class.gms</string>
+				</dict>
+			</array>
 		</dict>
 	</dict>
 	<key>scopeName</key>
