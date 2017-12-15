@@ -42,19 +42,20 @@ class BuildSelectedCommand(sublime_plugin.TextCommand):
             selected = ""
             for region in self.view.sel():
                 selected += self.view.substr(region)
+            # If none is selected, select the currect line
+            if not selected:
+                line = self.view.line(region)
+                selected = self.view.substr(line)
 
-            if selected:
-                # The code is run by writing to the remote.gcm file in the working folder
-                remote = os.path.join(working_folder, "remote.gcm")
-                print("Sending '{}' to gekko".format(selected))
-                with open(remote, 'w+') as f:
-                    f.write(selected)
-                # gekko checks remote.gcm file for updates 5 times pr. second
-                # After allowing enough time for gekko to update, delete the remote file
-                # time.sleep(0.3)
-                # os.remove(remote)
-            else:
-                print("Select the part of the code that you want to build.")
+            # The code is run by writing to the remote.gcm file in the working folder
+            remote = os.path.join(working_folder, "remote.gcm")
+            print("Sending '{}' to gekko".format(selected))
+            with open(remote, 'w+') as f:
+                f.write(selected)
+            # gekko checks remote.gcm file for updates 5 times pr. second
+            # After allowing enough time for gekko to update, delete the remote file
+            # time.sleep(0.3)
+            # os.remove(remote)
         else:
             print("Selected build only works with .gcm files")
 
