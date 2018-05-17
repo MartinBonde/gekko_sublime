@@ -54,9 +54,13 @@ class BuildSelectedCommand(sublime_plugin.TextCommand):
             if not selected:
                 line = self.view.line(region)
                 selected = self.view.substr(line)
-                print(line)
+                if selected.strip()[-1:] != ";":
+                    selected += ";"
+                    self.view.insert(edit, line.b, ";\n")
+                    line = self.view.line(region)
                 self.view.sel().clear()
                 self.view.sel().add(line.b+1)
+
 
             # The code is run by writing to the remote.gcm file in the working folder
             remote = os.path.join(working_folder, "remote.gcm")
