@@ -1,4 +1,6 @@
-// Not gamY specific
 [
-	{ "keys": ["ctrl+enter"], "command": "build_selected"},
+	{
+		"keys": ["ctrl+enter"], "command": "build_selected",
+		"context":[{ "key": "selector", "operator": "equal", "operand": "source.gekko"}],
+	},
 ]
