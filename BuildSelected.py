@@ -49,7 +49,7 @@ class BuildSelectedCommand(sublime_plugin.TextCommand):
         if not selected:
             line = self.view.line(region)
             selected = self.view.substr(line)
-            if selected.strip()[-1:] != ";":
+            if selected and selected[:2] != "//" and selected.strip()[-1:] != ";":
                 selected += ";"
                 self.view.insert(edit, line.b, ";\n")
                 line = self.view.line(region)
