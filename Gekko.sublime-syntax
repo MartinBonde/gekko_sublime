@@ -27,12 +27,12 @@ contexts:
 
   semicolon:
     - match:  \;
-      scope: keyword.command.gekko
+      scope: keyword.other.gekko
       pop: true
 
   commands:
     - match: ^\b((?i)ACCEPT|ANALYZE|CHECKOFF|CLEAR|CLIP|CLONE|CLOSE|CLS|COLLAPSE|COMPARE|COPY|COUNT|CREATE|DATE|DECOMP|DELETE|DISP|DOC|DOWNLOAD|EDIT|END|ENDO|EXIT|EXO|EXPORT|FINDMISSINGDATA|FOR|FUNCTION|PROCEDURE|GOTO|HDG|HELP|IF|ELSE|IMPORT|INDEX|INI|INTERPOLATE|ITERSHOW|LIBRARY|LIST|LOCK|MATRIX|MEM|MENU|MODE|MODEL|MULPRT|NAME|OLS|OPEN|OPTION|PAUSE|PIPE|PLOT|PRT|R_EXPORT|R_FILE|R_RUN|REBASE|READ|RENAME|RESET|RESTART|RETURN|RUN|SERIES|SHEET|SHOW|SIGN|SIM|SMOOTH|SPLICE|STOP|STRING|SYS|TABLE|TARGET|TELL|TIME|TIMEFILTER|TRANSLATE|TRUNCATE|UNFIX|UNLOCK|UNSWAP|VAL|WRITE|X12A|XEDIT|P)\b
-      scope: keyword.commands.gekko
+      scope: keyword.other.gekko
       push:
         - include: semicolon
         - include: options
@@ -40,8 +40,13 @@ contexts:
         - include: linecomment
 
   options:
-    - match: \<.*?\>
-      scope: keyword.command.gekko
+    - match: \<
+      scope: keyword.control.gekko
+      push:
+        - match: \>
+          scope: keyword.control.gekko
+          pop: true
+        - include: terminals
 
   linecomment:
     - match: (//).*
