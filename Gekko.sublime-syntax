@@ -1,0 +1,137 @@
+%YAML 1.2
+---
+name: Gekko
+author: Martin K. Bonde
+file_extensions: [gcm]
+scope: source.gekko
+
+
+contexts:
+  main:
+    - include: brackets1
+    - include: linecomment
+    - include: terminals
+    - include: commands
+    # - include: variable
+    # - include: semicolon
+    - include: left_bracket
+
+  terminals:
+    - include: list
+    - include: sets
+    - include: scalar
+    - include: string
+    - include: number
+    - include: math
+    - include: operator
+
+  semicolon:
+    - match:  \;
+      scope: keyword.command.gekko
+      pop: true
+
+  commands:
+    - match: ^\b((?i)ACCEPT|ANALYZE|CHECKOFF|CLEAR|CLIP|CLONE|CLOSE|CLS|COLLAPSE|COMPARE|COPY|COUNT|CREATE|DATE|DECOMP|DELETE|DISP|DOC|DOWNLOAD|EDIT|END|ENDO|EXIT|EXO|EXPORT|FINDMISSINGDATA|FOR|FUNCTION|PROCEDURE|GOTO|HDG|HELP|IF|ELSE|IMPORT|INDEX|INI|INTERPOLATE|ITERSHOW|LIBRARY|LIST|LOCK|MATRIX|MEM|MENU|MODE|MODEL|MULPRT|NAME|OLS|OPEN|OPTION|PAUSE|PIPE|PLOT|PRT|R_EXPORT|R_FILE|R_RUN|REBASE|READ|RENAME|RESET|RESTART|RETURN|RUN|SERIES|SHEET|SHOW|SIGN|SIM|SMOOTH|SPLICE|STOP|STRING|SYS|TABLE|TARGET|TELL|TIME|TIMEFILTER|TRANSLATE|TRUNCATE|UNFIX|UNLOCK|UNSWAP|VAL|WRITE|X12A|XEDIT|P)\b
+      scope: keyword.commands.gekko
+      push:
+        - include: semicolon
+        - include: options
+        - include: terminals
+        - include: linecomment
+
+  options:
+    - match: \<.*?\>
+      scope: keyword.command.gekko
+
+  linecomment:
+    - match: (//).*
+      scope: comment.line.gekko
+
+  string:
+    - match: \'[^\']*\'
+      scope: string.quoted.single
+
+  math:
+    - scope: keyword.operator.word
+      match: (?i)\b(SUM|ABS|ARCCOS|ARCSIN|ARCTAN|ARCTAN2|BETA|BETAREG|BINOMIAL|BOOL_(AND|EQV|IMP|NOT|OR|XOR)|CEIL|CENTROPY|COS|COSH|CVPOWER|DIV|DIV0|EDIST|ENTROPY|ERRORF|EXECSEED|EXP|FACT|FLOOR|FRAC|GAMMA|GAMMAREG|IFTHEN|LOG|LOG2|LOG10|LOGBETA|LOGGAMMA|MAPVAL|MAX|MIN|MOD|NCP(CM|F|VUPOW|VUSIN)|NORMAL|PI|POLY|POWER|RANDBINOMIAL|RANDLINEAR|RANDTRIANGLE|ROUND|RPOWER|SIGMOID|SIGN|SIGNPOWER|SIN|SINH|SL(EXP|LOG10|REC)|SQ(EXP|LOG10|R|REC|RT)|TANH?|TRUNC|UNIFORM|UNIFORMINT|VCPOWER)\b
+
+  left_bracket:
+    - match: \(
+      push: right_bracket
+    - match: \)
+      scope: invalid.illegal.stray-bracket-end
+
+  right_bracket:
+    - match: \)
+      pop: true
+    - include: main
+
+  number:
+    - scope: constant.numeric.gekko
+      match: (?<![\d.])\b\d+(\.\d+)?([eE]-?\d+)?|\.\d+([eE]-?\d+)?
+
+  scalar:
+    - match: \%\w+
+      scope: entity.name
+
+  operator:
+    - match: (\b(and|or|not)\b)|(\+|-|%|\*|\/|\*\*|=|<=?|>=?)
+      scope: keyword.operator.gekko
+
+  list:
+    - match: \#\w+
+      scope: entity.name
+
+  sets:
+    - match: \[
+      push:
+        - include: terminals
+        - match: \]
+          pop: true
+        - match: .+?
+          scope: string
+
+  variable:
+    - match: '\b\w+\b'
+      scope: entity.name
+
+
+  brackets1:
+    - match: \(
+      scope: punctuation.brackets.1.gekko
+      push:
+        - include: brackets2
+        - match: \)
+          pop: true
+          scope: punctuation.brackets.1.gekko
+        - include: main
+
+  brackets2:
+    - match: \(
+      scope: punctuation.brackets.2.gekko
+      push:
+        - include: brackets3
+        - match: \)
+          scope: punctuation.brackets.2.gekko
+          pop: true
+        - include: main
+
+  brackets3:
+    - match: \(
+      scope: punctuation.brackets.3.gekko
+      push:
+        - include: brackets4
+        - match: \)
+          scope: punctuation.brackets.3.gekko
+          pop: true
+        - include: main
+
+  brackets4:
+    - match: \(
+      scope: punctuation.brackets.4.gekko
+      push:
+        - include: brackets1
+        - match: \)
+          scope: punctuation.brackets.4.gekko
+          pop: true
+        - include: main
