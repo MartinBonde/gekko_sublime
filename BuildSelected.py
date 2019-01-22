@@ -9,7 +9,7 @@ import re
 
 class BuildSelectedCommand(sublime_plugin.TextCommand):
     """
-    Run selected Gekko commands by sending them to the remote file in the working directory.
+    Run selected Gekko commands by sending them to the remote file (using the path in the settings file).
     If no Gekko process is found, open Gekko with remote interface enabled and working directory set to current file directory.
     """
 
