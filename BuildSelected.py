@@ -32,8 +32,11 @@ class BuildSelectedCommand(sublime_plugin.TextCommand):
                     break
         # Else open Gekko with the current dir as working folder and interface remote enabled
             else:
-                if os.path.isfile(gekko_path):
+                if file_path:
                     working_folder = os.path.dirname(file_path)
+                else:
+                    working_folder = os.path.dirname(self.view.window().project_file_name())
+                if os.path.isfile(gekko_path) and working_folder:
                     start_code = "option interface remote = yes; OPTION interface remote file = '%s';" % remote_file_path
                     cmd = [gekko_path, "-folder:" + working_folder, start_code]
                     print("New Gekko instance opened. Remote control commands are written to %s" % remote_file_path)

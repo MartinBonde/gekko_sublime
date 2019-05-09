@@ -16,18 +16,20 @@
                         "children":
                         [
                             {
-                                "command": "open_file", "args":
+                                "command": "edit_settings", "args":
                                 {
-                                    "file": "${packages}/User/Gekko.sublime-settings"
+                                    "base_file": "${packages}/Gekko/Gekko.sublime-settings",
+                                    "default": "{\n$0\n}\n"
                                 },
-                                "caption": "Settings – User"
+                                "caption": "Settings"
                             },
                             {
-                                "command": "open_file", "args":
+                                "command": "edit_settings", "args":
                                 {
-                                    "file": "${packages}/Gekko/Gekko.sublime-settings"
+                                    "base_file": "${packages}/Gekko/Default (Windows).sublime-keymap",
+                                    "default": "{\n$0\n}\n"
                                 },
-                                "caption": "Settings – Default"
+                                "caption": "Key Bindings"
                             },
                         ]
                     }

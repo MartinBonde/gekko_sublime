@@ -1,6 +1,6 @@
 [
 	{
 		"keys": ["ctrl+enter"], "command": "build_selected",
-		"context":[{ "key": "selector", "operator": "equal", "operand": "source.gekko"}],
+		"context":[{ "key": "selector", "operator": "equal", "operand": "source.gekko|text.plain"}],
 	},
 ]
